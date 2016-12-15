@@ -22,6 +22,8 @@ public class TabsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_tabs);
 
+        setSupportActionBar(binding.toolbar);
+
         List<Fragment> data = new ArrayList<>();
         data.add(ColorFragment.instance(ColorFragment.BLUE));
         data.add(ColorFragment.instance(ColorFragment.RED));
@@ -32,6 +34,8 @@ public class TabsActivity extends AppCompatActivity {
 
         adapter = new ColorAdapter(getSupportFragmentManager(), data);
         binding.pager.setAdapter(adapter);
+
+        binding.tabs.setupWithViewPager(binding.pager);
 
     }
 }
